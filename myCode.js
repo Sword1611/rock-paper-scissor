@@ -20,40 +20,50 @@ let humanScore = 0;
 let computerScore = 0;
 
 function playRound(humanChoice, computerChoice) {
-
   if (humanChoice == computerChoice) {
     console.log("TIE!");
-  } 
+  }
   // rock
   else if (humanChoice == "ROCK" && computerChoice == "PAPER") {
     console.log("You LOSE! PAPER beats ROCK!");
-  } 
-  else if (humanChoice == "ROCK" && computerChoice == "SCISSORS") {
+    computerScore++;
+  } else if (humanChoice == "ROCK" && computerChoice == "SCISSORS") {
     console.log("You WIN! ROCK beats SCISSORS!");
-  } 
+    humanScore++;
+  }
   // paper
   else if (humanChoice == "PAPER" && computerChoice == "SCISSORS") {
     console.log("You LOSE! SCISSORS beats PAPER!");
-  } 
-  else if (humanChoice == "PAPER" && computerChoice == "ROCK") {
+    computerScore++;
+  } else if (humanChoice == "PAPER" && computerChoice == "ROCK") {
     console.log("You WIN! PAPER beats ROCK!");
+    humanScore++;
   }
-  // scissors 
+  // scissors
   else if (humanChoice == "SCISSORS" && computerChoice == "ROCK") {
     console.log("You LOSE! ROCK beats SCISSORS!");
-  } 
-  else if (humanChoice == "SCISSORS" && computerChoice == "PAPER") {
+    computerScore++;
+  } else if (humanChoice == "SCISSORS" && computerChoice == "PAPER") {
     console.log("You WIN! SCISSORS beats PAPER!");
-  } 
-
+    humanScore++;
+  }
 }
 
-const humanChoice = getHumanChoice();
-const computerChoice = getComputerChoice();
-console.log("Human choice: " + humanChoice);
-console.log("Computer choice: " + computerChoice);
+function playGame() {
+  const humanChoice = getHumanChoice();
+  const computerChoice = getComputerChoice();
+  console.log("Human choice: " + humanChoice);
+  console.log("Computer choice: " + computerChoice);
+  playRound(humanChoice, computerChoice);
+}
 
-playRound(humanChoice, computerChoice);
+for (let i = 1; i <= 5; i++) {
+  playGame();
+  console.log("------------------");
+}
+
+console.log("Human Score: " + humanScore);
+console.log("Computer Score: " + computerScore);
 
 // if (getHumanChoice(userInput) == "Error!"){
 //     window.alert("Error! Invalid input!");
